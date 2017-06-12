@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612171101) do
+ActiveRecord::Schema.define(version: 20170612171316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "prints", force: :cascade do |t|
+    t.integer  "publisher_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["publisher_id"], name: "index_prints_on_publisher_id", using: :btree
+  end
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name"
@@ -38,4 +45,5 @@ ActiveRecord::Schema.define(version: 20170612171101) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "prints", "publishers"
 end
