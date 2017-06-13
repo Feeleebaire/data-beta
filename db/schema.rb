@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612210449) do
+ActiveRecord::Schema.define(version: 20170613212134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ads", force: :cascade do |t|
+    t.integer  "publisher_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["publisher_id"], name: "index_ads_on_publisher_id", using: :btree
+  end
 
   create_table "pannels", force: :cascade do |t|
     t.integer  "publisher_id"
@@ -74,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170612210449) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "ads", "publishers"
   add_foreign_key "pannels", "publishers"
   add_foreign_key "prints", "publishers"
   add_foreign_key "radios", "publishers"
