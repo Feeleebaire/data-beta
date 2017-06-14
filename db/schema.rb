@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613212134) do
+ActiveRecord::Schema.define(version: 20170614170832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,18 +23,14 @@ ActiveRecord::Schema.define(version: 20170613212134) do
   end
 
   create_table "pannels", force: :cascade do |t|
-    t.integer  "publisher_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["publisher_id"], name: "index_pannels_on_publisher_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "prints", force: :cascade do |t|
-    t.integer  "publisher_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "name"
-    t.index ["publisher_id"], name: "index_prints_on_publisher_id", using: :btree
   end
 
   create_table "publishers", force: :cascade do |t|
@@ -44,24 +40,18 @@ ActiveRecord::Schema.define(version: 20170613212134) do
   end
 
   create_table "radios", force: :cascade do |t|
-    t.integer  "publisher_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["publisher_id"], name: "index_radios_on_publisher_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "televisions", force: :cascade do |t|
-    t.integer  "publisher_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["publisher_id"], name: "index_televisions_on_publisher_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transports", force: :cascade do |t|
-    t.integer  "publisher_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["publisher_id"], name: "index_transports_on_publisher_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,9 +72,4 @@ ActiveRecord::Schema.define(version: 20170613212134) do
   end
 
   add_foreign_key "ads", "publishers"
-  add_foreign_key "pannels", "publishers"
-  add_foreign_key "prints", "publishers"
-  add_foreign_key "radios", "publishers"
-  add_foreign_key "televisions", "publishers"
-  add_foreign_key "transports", "publishers"
 end
