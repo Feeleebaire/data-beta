@@ -1,3 +1,4 @@
 class Transport < ApplicationRecord
-  belongs_to :ads
+  belongs_to :ad
+  has_one :publisher
 end

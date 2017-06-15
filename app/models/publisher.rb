@@ -1,7 +1,8 @@
 class Publisher < ApplicationRecord
-  has_many :prints
-  has_many :radios
-  has_many :televisions
-  has_many :pannels
-  has_many :transports
+  has_many :ads
+  has_many :prints, through: :ads
+  has_many :radios, through: :ads
+  has_many :televisions, through: :ads
+  has_many :pannels, through: :ads
+  has_many :transports, through: :ads
 end
