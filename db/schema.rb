@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614170832) do
+ActiveRecord::Schema.define(version: 20170614171403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170614170832) do
   create_table "pannels", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "ads_id"
+    t.index ["ads_id"], name: "index_pannels_on_ads_id", using: :btree
   end
 
   create_table "prints", force: :cascade do |t|
@@ -72,4 +74,5 @@ ActiveRecord::Schema.define(version: 20170614170832) do
   end
 
   add_foreign_key "ads", "publishers"
+  add_foreign_key "pannels", "ads", column: "ads_id"
 end
