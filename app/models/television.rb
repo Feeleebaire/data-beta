@@ -1,3 +1,3 @@
 class Television < ApplicationRecord
-  belongs_to :publisher
+  belongs_to :ads
 end
