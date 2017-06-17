@@ -5,7 +5,7 @@ class Forest::ActionsController < ForestLiana::ApplicationController
     uri.data.force_encoding('utf-8')
 
     CSV.parse(uri.data).each do |row|
-      # Your business logic to create your data here.
+      Publisher.create!(row[0])
     end
 
     render json: { success: 'Data successfuly imported!' }
