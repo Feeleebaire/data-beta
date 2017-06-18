@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout "application", except: :index
+  layout "app"
    def index
     @campaigns = current_user.campaigns
   end
