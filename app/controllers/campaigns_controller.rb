@@ -1,5 +1,5 @@
 class CampaignsController < ApplicationController
-  layout "app"
+  layout "app", only: :show
    def index
     @campaigns = current_user.campaigns
   end
