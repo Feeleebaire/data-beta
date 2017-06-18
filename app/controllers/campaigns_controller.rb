@@ -12,7 +12,8 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = Campaign.new(campaigns_params)
+    @campaign = Campaign.new(campaign_params)
+    @campaign.user = current_user
     if @campaign.save
       redirect_to campaign_path(@campaign)
     else
@@ -20,7 +21,7 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def campaigns_params
-    params.require(:campaign).permit(:name, :start_date, :end_date, :user_id)
+  def campaign_params
+    params.require(:campaign).permit(:name, :budget, :start_date, :end_date)
   end
 end
